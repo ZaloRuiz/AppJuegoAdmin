@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppJuegoAdmin.Views.AgregarRetos"
+             Visual="Material"
+             BackgroundColor="WhiteSmoke">
+    <Shell.TitleView>
+        <Label Text="Agregar Reto" FontSize="22" FontFamily="Bow_Regular" TextColor="White" VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="430"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Row="0" Grid.Column="0" CornerRadius="7" HasShadow="True" BackgroundColor="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="entryDescripcion" Grid.Column="0" Grid.Row="0" Placeholder="Descripcion" PlaceholderColor="#48007f" TextColor="Black" 
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                        <Entry x:Name="entryTiempo" Placeholder="Tiempo" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
+                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                        <Entry x:Name="entryNivel" Placeholder="Nivel" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17"
+                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                        <Entry x:Name="entryEstado" Placeholder="Estado" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
+                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Text="Activo" Focused="entryEstado_Focused"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+                        <Entry x:Name="entryCategoria" Placeholder="Categoria" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" 
+                               FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" Focused="entryCategoria_Focused"/>
+                        <Entry x:Name="entrySubCategoria" Placeholder="SubCategoria" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" 
+                               FontSize="17" BackgroundColor="White" WidthRequest="140" Focused="entrySubCategoria_Focused"/>
+                    </StackLayout>
+                    <Entry x:Name="entryN1penitencia" Grid.Column="0" Grid.Row="3" Placeholder="Penitencia nivel 1" PlaceholderColor="#48007f" TextColor="Black"
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
+                    <Entry x:Name="entryN2penitencia" Grid.Column="0" Grid.Row="4" Placeholder="Penitencia nivel 2" PlaceholderColor="#48007f" TextColor="Black"
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
+                    <Entry x:Name="entryN3penitencia" Grid.Column="0" Grid.Row="5" Placeholder="Penitencia nivel 3" PlaceholderColor="#48007f" TextColor="Black"
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
+                </Grid>
+            </Frame>
+            <Button x:Name="btnGuardar" Grid.Column="0" Grid.Row="1" Text="Guardar" FontFamily="Atk_Bold" BackgroundColor="Green" TextColor="White"
+                    Margin="5, 20" CornerRadius="7" Clicked="btnGuardar_Clicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:AppJuegoAdmin.Views"
+       Title="AppJuegoAdmin" BackgroundColor="#9000FF"
+       x:Class="AppJuegoAdmin.AppShell" >
+    <Shell.TabBarTitleColor>
+        <Color>#FFFFFF</Color>
+    </Shell.TabBarTitleColor>
+    <TabBar>
+        <Tab Title="Inicio"
+            Icon="icon_feed.png">
+            <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:Index}" />
+        </Tab>
+        <Tab Title="Retos"
+            Icon="icon_about.png">
+            <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:ListaRetos}"/>
+        </Tab>
+        <Tab Title="Categorias"
+            Icon="icon_about.png">
+            <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:ListaCategorias}"/>
+        </Tab>
+    </TabBar>
+</Shell>

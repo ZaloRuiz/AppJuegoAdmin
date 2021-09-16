@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppJuegoAdmin.Views.ListaCategorias"
+             Visual="Material">
+    <Shell.TitleView>
+        <Label Text="Categorias" FontSize="22" FontFamily="Bow_Regular" TextColor="White" VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <ListView x:Name="listCategoia" BackgroundColor="WhiteSmoke" CachingStrategy="RecycleElement" Margin="5" RowHeight="100" ItemsSource="{Binding ListaCategorias}"
+                  SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Margin="5" HasShadow="True" CornerRadius="5" BackgroundColor="White" Padding="0">
+                            <StackLayout Padding="5">
+                                <Label FontSize="18" FontFamily="Atk_Regular" TextColor="#48007f" Margin="5">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding nombre}"/>
+                                            <Span Text="  -  Estado: "/>
+                                            <Span Text="{Binding estado}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FontSize="16" FontFamily="Atk_Regular" TextColor="Black" Text="{Binding descripcion}" Margin="5, 0"/>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
