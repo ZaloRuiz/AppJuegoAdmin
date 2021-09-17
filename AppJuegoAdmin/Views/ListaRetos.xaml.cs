@@ -1,4 +1,5 @@
-﻿using AppJuegoAdmin.ViewModels;
+﻿using AppJuegoAdmin.Models;
+using AppJuegoAdmin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +17,6 @@ namespace AppJuegoAdmin.Views
 		public ListaRetos()
 		{
 			InitializeComponent();
-			//ToolbarItem toolbar = new ToolbarItem
-			//{
-			//	IconImageSource = "icon_add.png",
-			//	Order = ToolbarItemOrder.Primary,
-			//	Priority = 1
-			//};
-			//this.ToolbarItems.Add(toolbar);
-			//toolbar.Clicked += ToolbarItem_Clicked;
 		}
 		private async void ToolbarItem_Clicked(object sender, EventArgs e)
 		{
@@ -33,6 +26,12 @@ namespace AppJuegoAdmin.Views
 		{
 			base.OnAppearing();
 			BindingContext = new ListaRetosVM();
+		}
+		private async void listReto_ItemTapped(object sender, ItemTappedEventArgs e)
+		{
+			var detalles = e.Item as RetoNombre;
+			await Shell.Current.Navigation.PushAsync(new EditarReto(detalles.id_reto, detalles.descripcion, detalles.tiempo, detalles.nivel, detalles.estado,
+				detalles.n1_penitencia, detalles.n2_penitencia, detalles.n3_penitencia), true);
 		}
 	}
 }

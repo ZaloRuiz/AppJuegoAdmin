@@ -2,17 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppJuegoAdmin.Views.ListaRetos"
-             Visual="Material">
+             Visual="Material"
+             BackgroundColor="WhiteSmoke">
     <Shell.TitleView>
         <StackLayout Orientation="Horizontal" BackgroundColor="#9000FF">
             <Label Text="Retos" FontSize="22" FontFamily="Bow_Regular" TextColor="White" VerticalTextAlignment="Center"/>
             <ImageButton x:Name="btnAdd" Source="icon_add" Clicked="ToolbarItem_Clicked" Aspect="AspectFit" VerticalOptions="FillAndExpand" 
-                         HorizontalOptions="EndAndExpand" BackgroundColor="#9000FF" Margin="20,0"/>
+                         HorizontalOptions="EndAndExpand" BackgroundColor="#9000FF" Margin="20,10"/>
         </StackLayout>
     </Shell.TitleView>
     <ContentPage.Content>
         <ListView x:Name="listReto" BackgroundColor="WhiteSmoke" CachingStrategy="RecycleElement" Margin="5" RowHeight="100" ItemsSource="{Binding ListaRetos}"
-                  SeparatorVisibility="None">
+                  SeparatorVisibility="None" ItemTapped="listReto_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

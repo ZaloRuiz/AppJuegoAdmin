@@ -26,6 +26,10 @@ namespace AppJuegoAdmin.Views
 			InitializeComponent();
 			GetCategorias();
 			GetSubCategorias();
+			entryDescripcion.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
+			entryN1penitencia.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
+			entryN2penitencia.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
+			entryN3penitencia.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
 		}
 		protected override void OnAppearing()
 		{

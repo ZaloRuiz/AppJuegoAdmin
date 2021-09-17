@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <Grid Padding="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="430"/>
+                <RowDefinition Height="460"/>
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -19,7 +19,7 @@
             <Frame Grid.Row="0" Grid.Column="0" CornerRadius="7" HasShadow="True" BackgroundColor="White">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="90"/>
                         <RowDefinition Height="60"/>
                         <RowDefinition Height="60"/>
                         <RowDefinition Height="60"/>
@@ -29,8 +29,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Entry x:Name="entryDescripcion" Grid.Column="0" Grid.Row="0" Placeholder="Descripcion" PlaceholderColor="#48007f" TextColor="Black" 
-                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
+                    <Editor x:Name="entryDescripcion" Grid.Column="0" Grid.Row="0" Placeholder="Descripcion" PlaceholderColor="#48007f" TextColor="Black" 
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" HeightRequest="80"/>
                     <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
                         <Entry x:Name="entryTiempo" Placeholder="Tiempo" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
                                BackgroundColor="White" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>

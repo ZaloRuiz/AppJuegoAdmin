@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppJuegoAdmin.Views.EditarReto"
+             Visual="Material">
+    <Shell.TitleView>
+        <StackLayout Orientation="Horizontal" BackgroundColor="#9000FF">
+            <Label Text="Editar Reto" FontSize="22" FontFamily="Bow_Regular" TextColor="White" VerticalTextAlignment="Center"/>
+            <ImageButton x:Name="btnAdd" Source="icon_edit" Clicked="ToolbarItem_Clicked" Aspect="AspectFit" VerticalOptions="FillAndExpand" 
+                         HorizontalOptions="EndAndExpand" BackgroundColor="#9000FF" Margin="20,10"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="410"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Row="0" Grid.Column="0" CornerRadius="7" HasShadow="True" BackgroundColor="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Editor x:Name="entryDescripcion" Grid.Column="0" Grid.Row="0" Placeholder="Descripcion" PlaceholderColor="#48007f" TextColor="Black" 
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" IsReadOnly="True" HeightRequest="80"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                        <Entry x:Name="entryTiempo" Placeholder="Tiempo" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
+                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Keyboard="Numeric" IsReadOnly="True"/>
+                        <Entry x:Name="entryNivel" Placeholder="Nivel" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17"
+                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Keyboard="Numeric" IsReadOnly="True"/>
+                        <Entry x:Name="entryEstado" Placeholder="Estado" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
+                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Text="Activo" Focused="entryEstado_Focused" IsReadOnly="True"/>
+                    </StackLayout>
+                    <Entry x:Name="entryN1penitencia" Grid.Column="0" Grid.Row="2" Placeholder="Penitencia nivel 1" PlaceholderColor="#48007f" TextColor="Black"
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
+                    <Entry x:Name="entryN2penitencia" Grid.Column="0" Grid.Row="3" Placeholder="Penitencia nivel 2" PlaceholderColor="#48007f" TextColor="Black"
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
+                    <Entry x:Name="entryN3penitencia" Grid.Column="0" Grid.Row="4" Placeholder="Penitencia nivel 3" PlaceholderColor="#48007f" TextColor="Black"
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
+                </Grid>
+            </Frame>
+            <Button x:Name="btnGuardar" Grid.Column="0" Grid.Row="1" Text="Guardar cambios" FontFamily="Atk_Bold" BackgroundColor="Green" TextColor="White"
+                    Margin="5, 20" CornerRadius="7" Clicked="btnGuardar_Clicked" IsVisible="False"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
