@@ -20,7 +20,7 @@ namespace AppJuegoAdmin.Views
 	public partial class EditarReto : ContentPage
 	{
 		private int _idReto = 0;
-		public EditarReto (int id_reto, string descripcion, int tiempo, int nivel, string estado, string n1_penitencia, string n2_penitencia, string n3_penitencia)
+		public EditarReto (int id_reto, string descripcion, int tiempo, string nivel, string estado, string n1_penitencia, string n2_penitencia)
 		{
 			InitializeComponent ();
 			entryDescripcion.Text = descripcion;
@@ -29,12 +29,10 @@ namespace AppJuegoAdmin.Views
 			entryEstado.Text = estado;
 			entryN1penitencia.Text = n1_penitencia;
 			entryN2penitencia.Text = n2_penitencia;
-			entryN3penitencia.Text = n3_penitencia;
 			_idReto = id_reto;
 			entryDescripcion.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
 			entryN1penitencia.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
 			entryN2penitencia.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
-			entryN3penitencia.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
 		}
 		private void ToolbarItem_Clicked(object sender, EventArgs e)
 		{
@@ -46,7 +44,6 @@ namespace AppJuegoAdmin.Views
 				entryEstado.IsReadOnly = false;
 				entryN1penitencia.IsReadOnly = false;
 				entryN2penitencia.IsReadOnly = false;
-				entryN3penitencia.IsReadOnly = false;
 				btnGuardar.IsVisible = true;
 			}
 			else
@@ -57,13 +54,16 @@ namespace AppJuegoAdmin.Views
 				entryEstado.IsReadOnly = true;
 				entryN1penitencia.IsReadOnly = true;
 				entryN2penitencia.IsReadOnly = true;
-				entryN3penitencia.IsReadOnly = true;
 				btnGuardar.IsVisible = false;
 			}
 		}
 		private async void entryEstado_Focused(object sender, FocusEventArgs e)
 		{
 			await PopupNavigation.Instance.PushAsync(new PickerEstado());
+		}
+		private async void entryNivel_Focused(object sender, FocusEventArgs e)
+		{
+			await PopupNavigation.Instance.PushAsync(new PickerNivel());
 		}
 		private async void btnGuardar_Clicked(object sender, EventArgs e)
 		{
@@ -79,59 +79,51 @@ namespace AppJuegoAdmin.Views
 							{
 								if (!string.IsNullOrWhiteSpace(entryN2penitencia.Text) || (!string.IsNullOrEmpty(entryN2penitencia.Text)))
 								{
-									if (!string.IsNullOrWhiteSpace(entryN3penitencia.Text) || (!string.IsNullOrEmpty(entryN3penitencia.Text)))
+									if(_idReto != 0)
 									{
-										if(_idReto != 0)
+										if (CrossConnectivity.Current.IsConnected)
 										{
-											if (CrossConnectivity.Current.IsConnected)
+											try
 											{
-												try
+												Reto _reto = new Reto()
 												{
-													Reto _reto = new Reto()
-													{
-														id_reto = _idReto,
-														descripcion = entryDescripcion.Text,
-														tiempo = Convert.ToInt32(entryTiempo.Text),
-														nivel = Convert.ToInt32(entryNivel.Text),
-														estado = entryEstado.Text.ToLower(),
-														n1_penitencia = entryN1penitencia.Text,
-														n2_penitencia = entryN2penitencia.Text,
-														n3_penitencia = entryN3penitencia.Text,
-													};
+													id_reto = _idReto,
+													descripcion = entryDescripcion.Text,
+													tiempo = Convert.ToInt32(entryTiempo.Text),
+													nivel = entryNivel.Text,
+													estado = entryEstado.Text.ToLower(),
+													n1_penitencia = entryN1penitencia.Text,
+													n2_penitencia = entryN2penitencia.Text,
+												};
 
-													var json = JsonConvert.SerializeObject(_reto);
-													var content = new StringContent(json, Encoding.UTF8, "application/json");
-													HttpClient client = new HttpClient();
-													var result = await client.PostAsync("https://dmrbolivia.com/api_appjuego/editarReto.php", content);
-													if (result.StatusCode == HttpStatusCode.OK)
-													{
-														await DisplayAlert("OK", "Se edito correctamente", "OK");
-														await Shell.Current.Navigation.PopAsync();
-													}
-													else
-													{
-														await DisplayAlert("Error", "Algo salio mal, intentelo de nuevo", "OK");
-														await Shell.Current.Navigation.PopAsync();
-													}
+												var json = JsonConvert.SerializeObject(_reto);
+												var content = new StringContent(json, Encoding.UTF8, "application/json");
+												HttpClient client = new HttpClient();
+												var result = await client.PostAsync("https://dmrbolivia.com/api_appjuego/editarReto.php", content);
+												if (result.StatusCode == HttpStatusCode.OK)
+												{
+													await DisplayAlert("OK", "Se edito correctamente", "OK");
+													await Shell.Current.Navigation.PopAsync();
 												}
-												catch (Exception)
+												else
 												{
 													await DisplayAlert("Error", "Algo salio mal, intentelo de nuevo", "OK");
+													await Shell.Current.Navigation.PopAsync();
 												}
 											}
-											else
+											catch (Exception)
 											{
-												await DisplayAlert("Error", "Necesitas estar conectado a internet", "OK");
+												await DisplayAlert("Error", "Algo salio mal, intentelo de nuevo", "OK");
 											}
 										}
 										else
 										{
-											await DisplayAlert("Error", "Algo salio mal, por favor vuelva a intentarlo", "OK");
+											await DisplayAlert("Error", "Necesitas estar conectado a internet", "OK");
 										}
 									}
 									else
 									{
-										await DisplayAlert("Campo vacio", "El campo de Penitencia nivel 3 esta vacio", "Ok");
+										await DisplayAlert("Error", "Algo salio mal, por favor vuelva a intentarlo", "OK");
 									}
 								}
 								else
@@ -164,5 +156,7 @@ namespace AppJuegoAdmin.Views
 				await DisplayAlert("Campo vacio", "El campo de Descripcion esta vacio", "Ok");
 			}
 		}
+
+		
 	}
 }

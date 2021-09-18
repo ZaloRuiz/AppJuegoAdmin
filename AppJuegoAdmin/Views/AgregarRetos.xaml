@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <Grid Padding="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="460"/>
+                <RowDefinition Height="400"/>
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -20,7 +20,6 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="90"/>
-                        <RowDefinition Height="60"/>
                         <RowDefinition Height="60"/>
                         <RowDefinition Height="60"/>
                         <RowDefinition Height="60"/>
@@ -35,7 +34,7 @@
                         <Entry x:Name="entryTiempo" Placeholder="Tiempo" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
                                BackgroundColor="White" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
                         <Entry x:Name="entryNivel" Placeholder="Nivel" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17"
-                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Focused="entryNivel_Focused"/>
                         <Entry x:Name="entryEstado" Placeholder="Estado" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
                                BackgroundColor="White" HorizontalOptions="FillAndExpand" Text="Activo" Focused="entryEstado_Focused"/>
                     </StackLayout>
@@ -48,8 +47,6 @@
                     <Entry x:Name="entryN1penitencia" Grid.Column="0" Grid.Row="3" Placeholder="Penitencia nivel 1" PlaceholderColor="#48007f" TextColor="Black"
                            FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
                     <Entry x:Name="entryN2penitencia" Grid.Column="0" Grid.Row="4" Placeholder="Penitencia nivel 2" PlaceholderColor="#48007f" TextColor="Black"
-                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
-                    <Entry x:Name="entryN3penitencia" Grid.Column="0" Grid.Row="5" Placeholder="Penitencia nivel 3" PlaceholderColor="#48007f" TextColor="Black"
                            FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
                 </Grid>
             </Frame>

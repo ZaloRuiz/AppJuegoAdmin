@@ -29,7 +29,6 @@ namespace AppJuegoAdmin.Views
 			entryDescripcion.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
 			entryN1penitencia.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
 			entryN2penitencia.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
-			entryN3penitencia.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeSentence);
 		}
 		protected override void OnAppearing()
 		{
@@ -48,6 +47,10 @@ namespace AppJuegoAdmin.Views
 			{
 				entryEstado.Text = App._estadoElegido;
 			});
+			MessagingCenter.Subscribe<PickerNivel>(this, "NivelElegido", sender =>
+			{
+				entryNivel.Text = App._nivelElegido;
+			});
 		}
 		private async void entryCategoria_Focused(object sender, FocusEventArgs e)
 		{
@@ -60,6 +63,10 @@ namespace AppJuegoAdmin.Views
 		private async void entryEstado_Focused(object sender, FocusEventArgs e)
 		{
 			await PopupNavigation.Instance.PushAsync(new PickerEstado());
+		}
+		private async void entryNivel_Focused(object sender, FocusEventArgs e)
+		{
+			await PopupNavigation.Instance.PushAsync(new PickerNivel());
 		}
 		public async void GetCategorias()
 		{
@@ -129,53 +136,45 @@ namespace AppJuegoAdmin.Views
 									{
 										if (!string.IsNullOrWhiteSpace(entryN2penitencia.Text) || (!string.IsNullOrEmpty(entryN2penitencia.Text)))
 										{
-											if (!string.IsNullOrWhiteSpace(entryN3penitencia.Text) || (!string.IsNullOrEmpty(entryN3penitencia.Text)))
+											if (CrossConnectivity.Current.IsConnected)
 											{
-												if (CrossConnectivity.Current.IsConnected)
+												try
 												{
-													try
+													Reto _reto = new Reto()
 													{
-														Reto _reto = new Reto()
-														{
-															descripcion = entryDescripcion.Text,
-															tiempo = Convert.ToInt32(entryTiempo.Text),
-															nivel = Convert.ToInt32(entryNivel.Text),
-															estado = entryEstado.Text.ToLower(),
-															n1_penitencia = entryN1penitencia.Text,
-															n2_penitencia = entryN2penitencia.Text,
-															n3_penitencia = entryN3penitencia.Text,
-															id_categoria = _idCategoria,
-															id_sub_categoria = _idSubCategoria
-														};
+														descripcion = entryDescripcion.Text,
+														tiempo = Convert.ToInt32(entryTiempo.Text),
+														nivel = entryNivel.Text,
+														estado = entryEstado.Text.ToLower(),
+														n1_penitencia = entryN1penitencia.Text,
+														n2_penitencia = entryN2penitencia.Text,
+														id_categoria = _idCategoria,
+														id_sub_categoria = _idSubCategoria
+													};
 
-														var json = JsonConvert.SerializeObject(_reto);
-														var content = new StringContent(json, Encoding.UTF8, "application/json");
-														HttpClient client = new HttpClient();
-														var result = await client.PostAsync("https://dmrbolivia.com/api_appjuego/agregarReto.php", content);
-														if (result.StatusCode == HttpStatusCode.OK)
-														{
-															await DisplayAlert("OK", "Se agrego correctamente", "OK");
-															await Shell.Current.Navigation.PopAsync();
-														}
-														else
-														{
-															await DisplayAlert("Error", "Algo salio mal, intentelo de nuevo", "OK");
-															await Shell.Current.Navigation.PopAsync();
-														}
+													var json = JsonConvert.SerializeObject(_reto);
+													var content = new StringContent(json, Encoding.UTF8, "application/json");
+													HttpClient client = new HttpClient();
+													var result = await client.PostAsync("https://dmrbolivia.com/api_appjuego/agregarReto.php", content);
+													if (result.StatusCode == HttpStatusCode.OK)
+													{
+														await DisplayAlert("OK", "Se agrego correctamente", "OK");
+														await Shell.Current.Navigation.PopAsync();
 													}
-													catch (Exception)
+													else
 													{
 														await DisplayAlert("Error", "Algo salio mal, intentelo de nuevo", "OK");
+														await Shell.Current.Navigation.PopAsync();
 													}
 												}
-												else
+												catch (Exception)
 												{
-													await DisplayAlert("Error", "Necesitas estar conectado a internet", "OK");
+													await DisplayAlert("Error", "Algo salio mal, intentelo de nuevo", "OK");
 												}
 											}
 											else
 											{
-												await DisplayAlert("Campo vacio", "El campo de Penitencia nivel 3 esta vacio", "Ok");
+												await DisplayAlert("Error", "Necesitas estar conectado a internet", "OK");
 											}
 										}
 										else
@@ -218,5 +217,7 @@ namespace AppJuegoAdmin.Views
 				await DisplayAlert("Campo vacio", "El campo de Descripcion esta vacio", "Ok");
 			}
 		}
+
+		
 	}
 }

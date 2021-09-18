@@ -37,15 +37,13 @@
                         <Entry x:Name="entryTiempo" Placeholder="Tiempo" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
                                BackgroundColor="White" HorizontalOptions="FillAndExpand" Keyboard="Numeric" IsReadOnly="True"/>
                         <Entry x:Name="entryNivel" Placeholder="Nivel" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17"
-                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Keyboard="Numeric" IsReadOnly="True"/>
+                               BackgroundColor="White" HorizontalOptions="FillAndExpand" Focused="entryNivel_Focused" IsReadOnly="True"/>
                         <Entry x:Name="entryEstado" Placeholder="Estado" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
                                BackgroundColor="White" HorizontalOptions="FillAndExpand" Text="Activo" Focused="entryEstado_Focused" IsReadOnly="True"/>
                     </StackLayout>
                     <Entry x:Name="entryN1penitencia" Grid.Column="0" Grid.Row="2" Placeholder="Penitencia nivel 1" PlaceholderColor="#48007f" TextColor="Black"
                            FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
                     <Entry x:Name="entryN2penitencia" Grid.Column="0" Grid.Row="3" Placeholder="Penitencia nivel 2" PlaceholderColor="#48007f" TextColor="Black"
-                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
-                    <Entry x:Name="entryN3penitencia" Grid.Column="0" Grid.Row="4" Placeholder="Penitencia nivel 3" PlaceholderColor="#48007f" TextColor="Black"
                            FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
                 </Grid>
             </Frame>

@@ -22,6 +22,7 @@ namespace AppJuegoAdmin
 		public static string _SubCategoriaElegida;
 		public static int _idSubCategoriaElegida = 0;
 		public static string _estadoElegido;
+		public static string _nivelElegido;
 		protected override void OnStart()
 		{
 		}

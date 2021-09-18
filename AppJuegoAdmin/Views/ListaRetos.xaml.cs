@@ -31,7 +31,7 @@ namespace AppJuegoAdmin.Views
 		{
 			var detalles = e.Item as RetoNombre;
 			await Shell.Current.Navigation.PushAsync(new EditarReto(detalles.id_reto, detalles.descripcion, detalles.tiempo, detalles.nivel, detalles.estado,
-				detalles.n1_penitencia, detalles.n2_penitencia, detalles.n3_penitencia), true);
+				detalles.n1_penitencia, detalles.n2_penitencia), true);
 		}
 	}
 }
