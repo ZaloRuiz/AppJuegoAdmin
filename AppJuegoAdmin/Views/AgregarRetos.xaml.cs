@@ -10,7 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -58,7 +58,8 @@ namespace AppJuegoAdmin.Views
 		}
 		private async void entrySubCategoria_Focused(object sender, FocusEventArgs e)
 		{
-			await PopupNavigation.Instance.PushAsync(new PickerSubCategoria());
+			//await PopupNavigation.Instance.PushAsync(new PickerSubCategoria());
+			 Navigation.ShowPopup(new PickCategoria());
 		}
 		private async void entryEstado_Focused(object sender, FocusEventArgs e)
 		{
@@ -217,7 +218,5 @@ namespace AppJuegoAdmin.Views
 				await DisplayAlert("Campo vacio", "El campo de Descripcion esta vacio", "Ok");
 			}
 		}
-
-		
 	}
 }

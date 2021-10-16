@@ -30,12 +30,16 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.12" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />  
     <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2083" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Helpers\PickCategoria.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Helpers\PickerCategoria.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -46,6 +50,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Helpers\PickerSubCategoria.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AgregarCategorias.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AgregarRetos.xaml">
@@ -61,6 +68,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ListaRetos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ListaRetosMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

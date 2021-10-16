@@ -22,5 +22,9 @@ namespace AppJuegoAdmin.Views
 			base.OnAppearing();
 			BindingContext = new ListaCategoriasVM();
 		}
+		private async void ToolbarItem_Clicked(object sender, EventArgs e)
+		{
+			await Shell.Current.Navigation.PushAsync(new AgregarCategorias(), true);
+		}
 	}
 }

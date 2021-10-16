@@ -1,5 +1,6 @@
 ﻿using AppJuegoAdmin.Models;
 using Newtonsoft.Json;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,6 +12,7 @@ namespace AppJuegoAdmin.ViewModels
 {
 	public class ListaRetosVM : INotifyPropertyChanged
 	{
+		private int _idCategoria = 0;
 		public event PropertyChangedEventHandler PropertyChanged;
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
@@ -29,26 +31,43 @@ namespace AppJuegoAdmin.ViewModels
 				}
 			}
 		}
-		public ListaRetosVM()
+		public ListaRetosVM(int _id_categoria)
 		{
+			_idCategoria = _id_categoria;
 			_listaRetos = new ObservableCollection<RetoNombre>();
 			GetRetos();
 		}
 		public async void GetRetos()
 		{
-			try
+			if (CrossConnectivity.Current.IsConnected)
 			{
-				HttpClient client = new HttpClient();
-				var response = await client.GetStringAsync("https://dmrbolivia.com/api_appjuego/listaRetosNombre.php");
-				var lista_retos = JsonConvert.DeserializeObject<List<RetoNombre>>(response);
-				foreach (var item in lista_retos)
+				try
 				{
-					_listaRetos.Add(item);
+					Reto _retoBuscar = new Reto()
+					{
+						id_categoria = _idCategoria
+					};
+					var json = JsonConvert.SerializeObject(_retoBuscar);
+					var content = new StringContent(json, Encoding.UTF8, "application/json");
+					HttpClient client = new HttpClient();
+					var result = await client.PostAsync("https://dmrbolivia.com/api_appjuego/listaRetosNombreBuscar.php", content);
+
+					var jsonR = await result.Content.ReadAsStringAsync();
+					var lista_retos = JsonConvert.DeserializeObject<List<RetoNombre>>(jsonR);
+
+					foreach (var item in lista_retos)
+					{
+						_listaRetos.Add(item);
+					}
+				}
+				catch (Exception)
+				{
+					await App.Current.MainPage.DisplayAlert("Error", "Algo salio mal, intentelo de nuevo", "OK");
 				}
 			}
-			catch (Exception err)
+			else
 			{
-				Console.WriteLine("#######################################" + err.ToString() + "#################################################");
+				await App.Current.MainPage.DisplayAlert("Error", "Necesitas estar conectado a internet", "OK");
 			}
 		}
 	}

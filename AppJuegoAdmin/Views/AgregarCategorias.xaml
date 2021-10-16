@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppJuegoAdmin.Views.AgregarCategorias"
+             Visual="Material"
+             BackgroundColor="WhiteSmoke">
+    <Shell.TitleView>
+        <Label Text="Agregar Categoria" FontSize="22" FontFamily="Bow_Regular" TextColor="White" VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="280"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Row="0" Grid.Column="0" CornerRadius="7" HasShadow="True" BackgroundColor="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="entryNombre" Grid.Column="0" Grid.Row="0" Placeholder="Nombre" PlaceholderColor="#48007f" TextColor="Black" 
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" HeightRequest="80"/>
+                    <Editor x:Name="entryDescripcion" Grid.Column="0" Grid.Row="1" Placeholder="Descripcion" PlaceholderColor="#48007f" TextColor="Black" 
+                           FontFamily="Atk_Regular" FontSize="17" BackgroundColor="White" HorizontalOptions="FillAndExpand" HeightRequest="80"/>
+                    <Entry x:Name="entryEstado" Grid.Column="0" Grid.Row="2" Placeholder="Estado" PlaceholderColor="#48007f" TextColor="Black" FontFamily="Atk_Regular" FontSize="17" 
+                            BackgroundColor="White" HorizontalOptions="FillAndExpand" Text="Activo" Focused="entryEstado_Focused"/>
+                </Grid>
+            </Frame>
+            <Button x:Name="btnGuardar" Grid.Column="0" Grid.Row="1" Text="Guardar" FontFamily="Atk_Bold" BackgroundColor="Green" TextColor="White"
+                    Margin="5, 20" CornerRadius="7" Clicked="btnGuardar_Clicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -10,10 +10,10 @@
     <ContentPage.Content>
         <Grid Padding="10" RowSpacing="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="120"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="110"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

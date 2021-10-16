@@ -57,6 +57,18 @@ namespace AppJuegoAdmin.Views
 				btnGuardar.IsVisible = false;
 			}
 		}
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			MessagingCenter.Subscribe<PickerEstado>(this, "EstadoElegido", sender =>
+			{
+				entryEstado.Text = App._estadoElegido;
+			});
+			MessagingCenter.Subscribe<PickerNivel>(this, "NivelElegido", sender =>
+			{
+				entryNivel.Text = App._nivelElegido;
+			});
+		}
 		private async void entryEstado_Focused(object sender, FocusEventArgs e)
 		{
 			await PopupNavigation.Instance.PushAsync(new PickerEstado());
@@ -90,7 +102,7 @@ namespace AppJuegoAdmin.Views
 													id_reto = _idReto,
 													descripcion = entryDescripcion.Text,
 													tiempo = Convert.ToInt32(entryTiempo.Text),
-													nivel = entryNivel.Text,
+													nivel = entryNivel.Text.ToUpper(),
 													estado = entryEstado.Text.ToLower(),
 													n1_penitencia = entryN1penitencia.Text,
 													n2_penitencia = entryN2penitencia.Text,
@@ -156,7 +168,5 @@ namespace AppJuegoAdmin.Views
 				await DisplayAlert("Campo vacio", "El campo de Descripcion esta vacio", "Ok");
 			}
 		}
-
-		
 	}
 }

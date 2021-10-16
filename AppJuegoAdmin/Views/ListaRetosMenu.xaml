@@ -1,19 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppJuegoAdmin.Views.ListaCategorias"
-             Visual="Material"
-             BackgroundColor="WhiteSmoke">
+             x:Class="AppJuegoAdmin.Views.ListaRetosMenu"
+             Visual="Material">
     <Shell.TitleView>
-        <StackLayout Orientation="Horizontal" BackgroundColor="#9000FF">
-            <Label Text="Categorias" FontSize="22" FontFamily="Bow_Regular" TextColor="White" VerticalTextAlignment="Center"/>
-            <ImageButton x:Name="btnAdd" Source="icon_add" Clicked="ToolbarItem_Clicked" Aspect="AspectFit" VerticalOptions="FillAndExpand" 
-                         HorizontalOptions="EndAndExpand" BackgroundColor="#9000FF" Margin="20,10"/>
-        </StackLayout>
+        <Label Text="Menu" FontSize="22" FontFamily="Bow_Regular" TextColor="White" VerticalTextAlignment="Center"/>
     </Shell.TitleView>
     <ContentPage.Content>
-        <ListView x:Name="listCategoia" BackgroundColor="WhiteSmoke" CachingStrategy="RecycleElement" Margin="5" RowHeight="100" ItemsSource="{Binding ListaCategorias}"
-                  SeparatorVisibility="None">
+        <ListView x:Name="listCategoria" BackgroundColor="WhiteSmoke" CachingStrategy="RecycleElement" Margin="5" RowHeight="110" 
+                  ItemsSource="{Binding ListaCategoriasCont}" SeparatorVisibility="None" ItemTapped="listCategoria_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -23,8 +18,8 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding nombre}"/>
-                                            <Span Text="  -  Estado: "/>
-                                            <Span Text="{Binding estado}"/>
+                                            <Span Text="  -  Retos: "/>
+                                            <Span Text="{Binding cntCat}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

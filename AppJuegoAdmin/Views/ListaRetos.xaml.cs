@@ -14,9 +14,11 @@ namespace AppJuegoAdmin.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ListaRetos : ContentPage
 	{
-		public ListaRetos()
+		private int _id_categoria = 0;
+		public ListaRetos(int id_categoria)
 		{
 			InitializeComponent();
+			_id_categoria = id_categoria;
 		}
 		private async void ToolbarItem_Clicked(object sender, EventArgs e)
 		{
@@ -25,7 +27,7 @@ namespace AppJuegoAdmin.Views
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			BindingContext = new ListaRetosVM();
+			BindingContext = new ListaRetosVM(_id_categoria);
 		}
 		private async void listReto_ItemTapped(object sender, ItemTappedEventArgs e)
 		{

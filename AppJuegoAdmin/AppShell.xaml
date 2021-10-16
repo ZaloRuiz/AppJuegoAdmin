@@ -14,7 +14,7 @@
         </Tab>
         <Tab Title="Retos"
             Icon="icon_about.png">
-            <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:ListaRetos}"/>
+            <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:ListaRetosMenu}"/>
         </Tab>
         <Tab Title="Categorias"
             Icon="icon_about.png">
